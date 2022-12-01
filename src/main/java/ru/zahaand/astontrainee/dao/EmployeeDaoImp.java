@@ -37,6 +37,6 @@ public class EmployeeDaoImp implements EmployeeDao {
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery(
-                "select Employee  from Employee", Employee.class).getResultList();
+                "select e from Employee e", Employee.class).getResultList();
     }
 }
