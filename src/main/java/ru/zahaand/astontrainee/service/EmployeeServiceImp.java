@@ -38,4 +38,9 @@ public class EmployeeServiceImp implements EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeDao.getAllEmployees();
     }
+
+    @Override
+    public List<Employee> getAllProjectEmployees(int projectId) {
+        return employeeDao.getAllProjectEmployees(projectId);
+    }
 }
