@@ -10,7 +10,7 @@ import ru.zahaand.astontrainee.service.EmployeeService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -39,5 +39,10 @@ public class EmployeeController {
     @GetMapping
     List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
+    }
+
+    @GetMapping("/project/{id}")
+    List<Employee> getAllProjectEmployees(@PathVariable int id) {
+        return employeeService.getAllProjectEmployees(id);
     }
 }
