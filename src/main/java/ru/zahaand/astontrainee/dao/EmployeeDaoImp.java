@@ -2,6 +2,7 @@ package ru.zahaand.astontrainee.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.zahaand.astontrainee.model.Employee;
@@ -38,5 +39,14 @@ public class EmployeeDaoImp implements EmployeeDao {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery(
                 "select e from Employee e", Employee.class).getResultList();
+    }
+
+    @Override
+    public List<Employee> getAllProjectEmployees(int projectId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Employee> query = session.createQuery(
+                "select e from Employee e inner join e.project where e.project.id = :projectId", Employee.class);
+        query.setParameter(projectId, projectId);
+        return query.getResultList();
     }
 }

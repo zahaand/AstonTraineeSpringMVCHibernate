@@ -9,4 +9,5 @@ public interface EmployeeDao {
     Employee read(int id);
     void delete(int id);
     List<Employee> getAllEmployees();
+    List<Employee> getAllProjectEmployees(int projectId);
 }
